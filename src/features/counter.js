@@ -14,10 +14,14 @@ export const counterReducer = createReducer(initialState, (builder) => {
         state.value += 1;
     });
     builder.addCase(dec, (state) => {
-        state.value > 0 ? state.value-- : state.value = 0
+        if (state.value > 0) {
+            state.value -= 1
+        } else {
+            state.value = 0
+        }
     });
     builder.addCase(zero, (state) => {
-        state.value = initialState.value;
+        state.value = 0;
     });
     builder.addCase(rand, (state, action) => {
         state.value = action.payload;
